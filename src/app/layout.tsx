@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
+import { personJsonLd, siteMetadata } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,32 +19,7 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["500", "600", "700"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://achrafboutzad.com"),
-  title: "Achraf Boutzad — Software Developer",
-  description:
-    "Portfolio of Achraf Boutzad — a software developer crafting modern, performant and delightful web experiences.",
-  keywords: [
-    "Achraf Boutzad",
-    "Software Developer",
-    "Full Stack Developer",
-    "Next.js",
-    "React",
-    "Portfolio",
-  ],
-  authors: [{ name: "Achraf Boutzad" }],
-  openGraph: {
-    title: "Achraf Boutzad — Software Developer",
-    description:
-      "Portfolio of Achraf Boutzad — a software developer crafting modern, performant and delightful web experiences.",
-    type: "website",
-    images: ["/achraf-logo-1.png"],
-  },
-  icons: {
-    icon: "/achraf-logo-1.png",
-    apple: "/achraf-logo-1.png",
-  },
-};
+export const metadata: Metadata = siteMetadata;
 
 export default function RootLayout({
   children,
@@ -55,6 +31,12 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+      </head>
       <body className="min-h-full">{children}</body>
     </html>
   );

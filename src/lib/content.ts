@@ -2,7 +2,10 @@ export const profile = {
   name: "Achraf Boutzad",
   firstName: "Achraf",
   lastName: "Boutzad",
-  role: "Software Engineer · AI · DevOps",
+  role: "Senior Software Engineer · DevOps · AI",
+  seoTitle: "Achraf Boutzad | Senior Software Engineer & DevOps Engineer",
+  seoDescription:
+    "Achraf Boutzad is a Senior Software Engineer and DevOps Engineer specializing in AI, cloud infrastructure, CI/CD, and scalable full-stack systems. Based in Morocco.",
   tagline:
     "I build intelligent, scalable software — from AI-powered products to the pipelines that ship them.",
   location: "Morocco",
