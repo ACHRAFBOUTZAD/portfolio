@@ -19,6 +19,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://achrafboutzad.com"),
   title: "Achraf Boutzad — Software Developer",
   description:
     "Portfolio of Achraf Boutzad — a software developer crafting modern, performant and delightful web experiences.",
