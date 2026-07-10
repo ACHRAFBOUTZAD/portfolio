@@ -1,26 +1,183 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Palette
+     ink_black   #001524  → base / background
+     stormy_teal #15616d  → secondary accent
+     papaya_whip #ffecd1  → warm light text
+     vivid_tangerine #ff7d00 → primary accent
+     brandy      #78290f  → tertiary accent */
+  --background: #000c15;
+  --background-soft: #00111d;
+  --surface: #062230;
+  --surface-2: #0a2c3a;
+  --border: #0c3940;
+  --foreground: #fff7ed;
+  --muted: #9fb9c0;
+  --muted-dark: #5f7f88;
+
+  --accent: #ff7d00;
+  --accent-2: #3ec5da;
+  --accent-3: #e66235;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-soft: var(--background-soft);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-dark: var(--muted-dark);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+
+  /* Full palette (usable as e.g. text-ink-500, bg-tangerine-500) */
+  --color-ink-100: #000407;
+  --color-ink-200: #00080e;
+  --color-ink-300: #000c15;
+  --color-ink-400: #00111d;
+  --color-ink-500: #001524;
+  --color-ink-600: #004c83;
+  --color-ink-700: #0083e1;
+  --color-ink-800: #41b0ff;
+  --color-ink-900: #a0d7ff;
+
+  --color-teal-100: #041315;
+  --color-teal-200: #08262b;
+  --color-teal-300: #0c3940;
+  --color-teal-400: #104c56;
+  --color-teal-500: #15616d;
+  --color-teal-600: #2199ab;
+  --color-teal-700: #3ec5da;
+  --color-teal-800: #7ed9e7;
+  --color-teal-900: #bfecf3;
+
+  --color-papaya-100: #5d3600;
+  --color-papaya-200: #ba6c00;
+  --color-papaya-300: #ff9f17;
+  --color-papaya-400: #ffc574;
+  --color-papaya-500: #ffecd1;
+  --color-papaya-600: #fff0da;
+  --color-papaya-700: #fff4e3;
+  --color-papaya-800: #fff7ed;
+  --color-papaya-900: #fffbf6;
+
+  --color-tangerine-100: #331900;
+  --color-tangerine-200: #663100;
+  --color-tangerine-300: #994a00;
+  --color-tangerine-400: #cc6300;
+  --color-tangerine-500: #ff7d00;
+  --color-tangerine-600: #ff9633;
+  --color-tangerine-700: #ffb066;
+  --color-tangerine-800: #ffca99;
+  --color-tangerine-900: #ffe5cc;
+
+  --color-brandy-100: #180803;
+  --color-brandy-200: #2f1006;
+  --color-brandy-300: #471809;
+  --color-brandy-400: #5e200c;
+  --color-brandy-500: #78290f;
+  --color-brandy-600: #b93f17;
+  --color-brandy-700: #e66235;
+  --color-brandy-800: #ee9679;
+  --color-brandy-900: #f7cbbc;
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Ambient background grid + glow */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(60rem 60rem at 80% -10%, rgba(255, 125, 0, 0.12), transparent 60%),
+    radial-gradient(50rem 50rem at 0% 20%, rgba(62, 197, 218, 0.10), transparent 55%),
+    radial-gradient(40rem 40rem at 60% 100%, rgba(230, 98, 53, 0.08), transparent 60%);
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 50% 0%, black, transparent 85%);
+  pointer-events: none;
+}
+
+::selection {
+  background: rgba(255, 125, 0, 0.35);
+  color: #fff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--accent), var(--accent-2));
+  border-radius: 9999px;
+  border: 2px solid var(--background);
+}
+
+@layer utilities {
+  .container-page {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  .text-gradient {
+    background: linear-gradient(120deg, #fff7ed 5%, var(--accent) 45%, var(--accent-2) 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+  }
+
+  .glow-ring {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 20px 60px -20px rgba(255, 125, 0, 0.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

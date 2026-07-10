@@ -1,0 +1,96 @@
+"use client";
+
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
+import { useRef } from "react";
+import { SectionHeading } from "@/components/SectionHeading";
+import { Reveal } from "@/components/animations/Reveal";
+import { experience } from "@/lib/content";
+
+export function Experience() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start center", "end center"],
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  return (
+    <section
+      id="experience"
+      className="relative scroll-mt-24 border-y border-border bg-background-soft/40 py-24 md:py-32"
+    >
+      <div className="container-page">
+        <SectionHeading
+          index="04"
+          title="Experience"
+          subtitle="My journey so far — building, learning and growing."
+        />
+
+        <div ref={ref} className="relative pl-8 md:pl-10">
+          {/* Timeline track */}
+          <div className="absolute left-[7px] top-2 h-full w-px bg-border md:left-[11px]" />
+          {/* Scroll-linked progress line */}
+          <motion.div
+            style={{ scaleY }}
+            className="absolute left-[7px] top-2 h-full w-px origin-top bg-gradient-to-b from-accent via-accent-2 to-accent-3 md:left-[11px]"
+          />
+
+          <div className="space-y-12">
+            {experience.map((item, i) => (
+              <Reveal key={item.role + item.company} delay={i * 0.05}>
+                <div className="relative">
+                  <ProgressDot progress={scrollYProgress} index={i} total={experience.length} />
+                  <div className="glass rounded-2xl p-6">
+                    <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      <h3 className="font-display text-xl font-semibold">
+                        {item.role}
+                      </h3>
+                      <span className="font-mono text-sm text-accent-2">
+                        {item.period}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm font-medium text-foreground/80">
+                      {item.company}
+                    </p>
+                    <p className="mt-3 text-muted">{item.description}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProgressDot({
+  progress,
+  index,
+  total,
+}: {
+  progress: ReturnType<typeof useScroll>["scrollYProgress"];
+  index: number;
+  total: number;
+}) {
+  const threshold = index / Math.max(total - 1, 1);
+  const scale = useTransform(
+    progress,
+    [threshold - 0.15, threshold],
+    [0.8, 1.3]
+  );
+
+  return (
+    <motion.span
+      style={{ scale }}
+      className="absolute -left-8 top-6 grid h-4 w-4 place-items-center rounded-full border-2 border-accent bg-background md:-left-10"
+    >
+      <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+    </motion.span>
+  );
+}
