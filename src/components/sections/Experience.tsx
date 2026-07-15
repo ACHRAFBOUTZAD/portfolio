@@ -55,9 +55,16 @@ export function Experience() {
                       </span>
                     </div>
                     <p className="mt-1 text-sm font-medium text-foreground/80">
-                      {item.company}
+                      {item.company} · {item.location}
                     </p>
-                    <p className="mt-3 text-muted">{item.description}</p>
+                    <ul className="mt-4 space-y-2 text-muted">
+                      {item.highlights.map((highlight) => (
+                        <li key={highlight} className="flex gap-2">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </Reveal>

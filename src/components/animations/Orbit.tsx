@@ -14,18 +14,18 @@ const rings: Ring[] = [
   {
     radius: 138,
     duration: 42,
-    items: ["Software Engineer", "Machine Learning", "Databases", "DevOps"],
+    items: ["Software Engineer", "Spring Boot", "Kafka", "DevOps"],
   },
   {
     radius: 92,
     duration: 30,
     reverse: true,
-    items: ["Realtime", "Cloud", "APIs", "CI/CD"],
+    items: ["Realtime", "MQTT", "WebSockets", "CI/CD"],
   },
   {
     radius: 48,
     duration: 20,
-    items: ["AI", "Docker"],
+    items: ["FastAPI", "Docker"],
   },
 ];
 

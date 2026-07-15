@@ -7,6 +7,7 @@ import { ProfileImage } from "@/components/ProfileImage";
 import { Aurora } from "@/components/animations/Aurora";
 import { Magnetic } from "@/components/animations/Magnetic";
 import { Orbit } from "@/components/animations/Orbit";
+import { CvDownload } from "@/components/CvDownload";
 
 const initials = `${profile.firstName[0]}${profile.lastName[0]}`;
 
@@ -145,12 +146,7 @@ export function Hero() {
               </a>
             </Magnetic>
             <Magnetic>
-              <a
-                href="#contact"
-                className="glass block rounded-xl px-6 py-3 font-medium text-foreground transition-colors hover:bg-white/10"
-              >
-                Get in touch
-              </a>
+              <CvDownload variant="glass" />
             </Magnetic>
           </motion.div>
 

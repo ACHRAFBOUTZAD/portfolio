@@ -5,6 +5,7 @@ import { Reveal } from "@/components/animations/Reveal";
 import { StaggerGroup, StaggerItem } from "@/components/animations/Stagger";
 import { Parallax } from "@/components/animations/Parallax";
 import { CountUp } from "@/components/animations/CountUp";
+import { CvDownload } from "@/components/CvDownload";
 import { profile, stats } from "@/lib/content";
 
 export function About() {
@@ -19,10 +20,9 @@ export function About() {
           </Reveal>
           <Reveal delay={0.1}>
             <p>
-              I care deeply about the details — smooth interactions, clean code
-              and accessible experiences that feel effortless. When I&apos;m not
-              shipping, you&apos;ll find me exploring new tools, contributing to
-              side projects, or learning something new.
+              At Haldorix, I work with MARWA Corporation on operational software —
+              from real-time production dashboards and WebSocket-driven updates to
+              CI/CD automation and event-driven architectures with Kafka and MQTT.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
@@ -33,6 +33,14 @@ export function About() {
               <span className="glass rounded-full px-4 py-2 text-sm text-foreground">
                 ✉️ {profile.email}
               </span>
+              <span className="glass rounded-full px-4 py-2 text-sm text-foreground">
+                📞 {profile.phone}
+              </span>
+            </div>
+          </Reveal>
+          <Reveal delay={0.25}>
+            <div className="pt-4">
+              <CvDownload />
             </div>
           </Reveal>
         </div>

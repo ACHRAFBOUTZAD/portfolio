@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { Reveal } from "@/components/animations/Reveal";
+import { CvDownload } from "@/components/CvDownload";
 import { profile } from "@/lib/content";
 
 export function Contact() {
@@ -21,7 +22,7 @@ export function Contact() {
 
         <Reveal>
           <p className="font-mono text-sm uppercase tracking-[0.3em] text-accent-2">
-            05 — Contact
+            06 — Contact
           </p>
         </Reveal>
         <Reveal delay={0.05}>
@@ -38,15 +39,18 @@ export function Contact() {
         </Reveal>
 
         <Reveal delay={0.15}>
-          <motion.a
-            href={`mailto:${profile.email}`}
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            className="mt-10 inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-accent to-accent-2 px-8 py-4 text-lg font-medium text-white shadow-xl shadow-accent/30"
-          >
-            {profile.email}
-            <span aria-hidden>→</span>
-          </motion.a>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <motion.a
+              href={`mailto:${profile.email}`}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-accent to-accent-2 px-8 py-4 text-lg font-medium text-white shadow-xl shadow-accent/30"
+            >
+              {profile.email}
+              <span aria-hidden>→</span>
+            </motion.a>
+            <CvDownload variant="glass" className="text-base" />
+          </div>
         </Reveal>
 
         <Reveal delay={0.2}>

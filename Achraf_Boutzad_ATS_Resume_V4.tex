@@ -1,0 +1,103 @@
+\documentclass[11pt]{article}
+
+\usepackage[left=0.75in,right=0.75in,top=0.6in,bottom=0.6in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{parskip}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\setlength{\emergencystretch}{2em}
+\setlist[itemize]{leftmargin=*, topsep=2pt, itemsep=1.5pt, parsep=0pt, partopsep=0pt}
+
+\titleformat{\section}
+  {\large\bfseries}
+  {}{0pt}{}
+  [\vspace{-2pt}\titlerule]
+\titlespacing*{\section}{0pt}{7pt}{4pt}
+
+\newcommand{\role}[4]{%
+  \textbf{#1} \hfill #2\\
+  \textit{#3} \hfill \textit{#4}
+}
+
+\begin{document}
+
+{\LARGE\textbf{Achraf Boutzad}}\\[-1pt]
+{\large\textbf{Software Engineer $|$ DevOps Engineer}}\\[-1pt]
+Marrakech, Morocco $|$ +212 695 143 629 $|$ \href{mailto:achrafboutzad@gmail.com}{achrafboutzad@gmail.com} $|$ \href{https://www.linkedin.com/in/achraf-boutzad/}{LinkedIn} $|$ \href{https://achrafboutzad.com}{achrafboutzad.com}
+
+\section{Professional Summary}
+Software Engineer and DevOps Engineer with one year of experience delivering operational software for MARWA through Haldorix. Builds real-time dashboards, monitoring systems, APIs, and IoT integrations using Spring Boot, FastAPI, Next.js, Kafka, MQTT, WebSockets, and CI/CD.
+
+\section{Core Competencies}
+\begin{itemize}
+  \item \textbf{Methodologies:} Agile, Scrum, SDLC, iterative delivery, continuous improvement, DevOps practices
+  \item \textbf{Analysis \& Design:} Requirements analysis, UML, Merise, microservices, event-driven architecture, REST API design, data modeling
+  \item \textbf{Testing \& QA:} JUnit, Selenium, SonarQube, unit testing, integration testing, API testing, code quality review
+  \item \textbf{Collaboration \& Documentation:} Cross-functional teamwork, technical documentation, stakeholder communication, ClickUp, customer orientation
+  \item \textbf{Technical Skills:} Java/JEE, Spring Boot, Python, FastAPI, JavaScript, TypeScript, Next.js, React, Angular, SQL/PLSQL, HTML, CSS, Tailwind CSS
+  \item \textbf{Tools \& Platforms:} Git, GitHub, CI/CD, Docker, Linux, Kafka, MQTT, WebSockets, MySQL, Oracle, SQL Server, Power BI, Streamlit
+\end{itemize}
+
+\section{Professional Experience}
+\role{Software Engineer}{2025--Present}{Haldorix -- MARWA Corporation}{Morocco}
+\begin{itemize}
+  \item Engineered real-time production dashboards and operational monitoring features that increased workflow visibility and contributed to an estimated 50\% improvement in team productivity.
+  \item Optimized order and station workflows by exposing bottlenecks, queue status, and processing KPIs, helping reduce operational waiting time by approximately 30\%.
+  \item Integrated backend services, WebSocket-based updates, and event-driven data flows to deliver timely production metrics and improve responsiveness for operational users.
+  \item Automated build, testing, and deployment activities through Git-based CI/CD practices, shortening release preparation and reducing deployment-related defects.
+  \item Collaborated with MARWA stakeholders and Haldorix engineers to translate business requirements into maintainable features, document changes, and support reliable releases.
+\end{itemize}
+
+\role{Business Intelligence Intern}{May 2023--Jul 2023}{Faculty of Sciences Semlalia}{Marrakech, Morocco}
+\begin{itemize}
+  \item Designed and implemented a decision-support information system for road-safety data analysis.
+  \item Integrated road-safety datasets into a centralized data warehouse, improving analytical consistency and accessibility.
+  \item Built multidimensional analyses using OLAP cubes and MDX queries to accelerate structured exploration of operational indicators.
+  \item Developed interactive Power BI dashboards for near-real-time visualization and clearer reporting of key metrics.
+\end{itemize}
+
+\section{Projects \& Analytics Experience}
+\textbf{Real-Time Production Monitoring and Bottleneck Analytics Platform} -- Next.js, Spring Boot, WebSockets, Kafka, MySQL
+\begin{itemize}
+  \item Architected a live operations platform that streams station status, order progress, queue depth, throughput, waiting time, and efficiency KPIs to responsive dashboards.
+  \item Implemented event-driven processing, WebSocket updates, alert rules, historical trend analysis, and role-based views for production supervision and bottleneck detection.
+\end{itemize}
+
+\textbf{Industrial IoT Telemetry and Alerting System} -- FastAPI, Python, MQTT, Kafka, PostgreSQL, Docker
+\begin{itemize}
+  \item Built an IoT ingestion layer for device telemetry using MQTT, asynchronous FastAPI services, validation pipelines, and Kafka-based event distribution.
+  \item Added threshold alerts, device-health monitoring, time-series aggregation, retry handling, and containerized deployment for resilient industrial integrations.
+\end{itemize}
+
+\textbf{Distributed Service Monitoring and Incident Platform} -- Spring Boot, Kafka, WebSockets, SQL, Docker
+\begin{itemize}
+  \item Developed microservices that collect application health, job status, error events, and deployment signals and expose them through real-time monitoring APIs.
+  \item Designed service-level dashboards, incident timelines, audit logs, and notification workflows to support observability and faster root-cause analysis.
+\end{itemize}
+
+\textbf{Workflow and Order Orchestration System} -- FastAPI, Next.js, WebSockets, MySQL
+\begin{itemize}
+  \item Implemented configurable workflows, order-state transitions, assignment rules, SLA timers, live status synchronization, and analytics for operational decision-making.
+\end{itemize}
+
+\section{Education}
+\textbf{Specialized Master's in Information Systems Engineering} \hfill 2023--2025\\
+Faculty of Sciences Semlalia, Marrakech
+
+\textbf{Bachelor's Degree in Mathematics and Computer Science} \hfill 2018--2023\\
+Faculty of Sciences Semlalia, Marrakech
+
+\textbf{Baccalaureate in Mathematical Sciences A} \hfill 2017--2018\\
+Lycee Akensouse, Essaouira
+
+\section{Certifications}
+\begin{itemize}
+  \item Engineering Practices for Building Quality Software -- Coursera
+  \item Machine Learning with Python -- Coursera
+\end{itemize}
+
+\end{document}

@@ -9,6 +9,7 @@ import {
 } from "motion/react";
 import { navLinks, profile } from "@/lib/content";
 import { Logo } from "@/components/Logo";
+import { CvDownload } from "@/components/CvDownload";
 
 export function Navbar() {
   const { scrollY } = useScroll();
@@ -64,6 +65,7 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
+          <CvDownload className="hidden px-4 py-2 text-sm lg:inline-flex" />
           <a
             href="#contact"
             className="hidden rounded-lg bg-foreground px-4 py-2 text-sm font-medium text-background transition-transform hover:scale-[1.03] active:scale-95 sm:inline-block"
@@ -115,6 +117,16 @@ export function Navbar() {
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href={profile.cv}
+                  download={profile.cvFileName}
+                  onClick={() => setMenuOpen(false)}
+                  className="block rounded-lg px-4 py-3 text-muted transition-colors hover:bg-white/5 hover:text-foreground"
+                >
+                  Download CV
+                </a>
+              </li>
               <li>
                 <a
                   href={`mailto:${profile.email}`}
