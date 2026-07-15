@@ -7,6 +7,7 @@ import { ProfileImage } from "@/components/ProfileImage";
 import { Aurora } from "@/components/animations/Aurora";
 import { Magnetic } from "@/components/animations/Magnetic";
 import { Orbit } from "@/components/animations/Orbit";
+import { HeroName } from "@/components/animations/HeroName";
 import { CvDownload } from "@/components/CvDownload";
 
 const initials = `${profile.firstName[0]}${profile.lastName[0]}`;
@@ -22,20 +23,6 @@ const item: Variants = {
     opacity: 1,
     y: 0,
     transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const nameGroup: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
-};
-
-const nameLine: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -126,17 +113,7 @@ export function Hero() {
               {profile.role}
             </motion.p>
 
-            <motion.h1
-              variants={nameGroup}
-              className="font-display text-[2.5rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
-            >
-              <motion.span variants={nameLine} className="block text-gradient">
-                {profile.firstName}
-              </motion.span>
-              <motion.span variants={nameLine} className="block text-foreground/90">
-                {profile.lastName}
-              </motion.span>
-            </motion.h1>
+            <HeroName />
 
             <motion.p
               variants={item}

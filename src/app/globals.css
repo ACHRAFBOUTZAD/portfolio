@@ -172,6 +172,32 @@ body::after {
     color: transparent;
   }
 
+  .text-gradient-animated {
+    background: linear-gradient(
+      100deg,
+      #fff7ed 0%,
+      #ff7d00 22%,
+      #3ec5da 48%,
+      #ff7d00 72%,
+      #fff7ed 100%
+    );
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-shift 7s ease-in-out infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
+  }
+
   .glass {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -186,5 +212,10 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .text-gradient-animated {
+    animation: none;
+    background-position: 0% center;
   }
 }
