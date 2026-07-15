@@ -65,8 +65,8 @@ export const siteMetadata: Metadata = {
     images: ["/achraf-logo-1.png"],
   },
   icons: {
-    icon: "/achraf-logo-1.png",
-    apple: "/achraf-logo-1.png",
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
   },
   category: "technology",
 };

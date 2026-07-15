@@ -17,50 +17,27 @@ const container: Variants = {
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
-const letter: Variants = {
-  hidden: { opacity: 0, y: "0.5em", rotateX: -90 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    rotateX: 0,
-    transition: { type: "spring", stiffness: 200, damping: 18 },
-  },
-};
-
-const letterGroup: Variants = {
+const nameGroup: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.05 } },
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
 };
 
-function AnimatedText({ text, className }: { text: string; className?: string }) {
-  return (
-    <motion.span
-      variants={letterGroup}
-      className={className}
-      style={{ display: "inline-block" }}
-      aria-label={text}
-    >
-      {text.split("").map((char, i) => (
-        <motion.span
-          key={`${char}-${i}`}
-          variants={letter}
-          style={{ display: "inline-block", transformOrigin: "bottom" }}
-        >
-          {char}
-        </motion.span>
-      ))}
-    </motion.span>
-  );
-}
+const nameLine: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 function HeroPortrait({ showOrbit = true }: { showOrbit?: boolean }) {
   return (
@@ -150,12 +127,15 @@ export function Hero() {
             </motion.p>
 
             <motion.h1
-              variants={item}
+              variants={nameGroup}
               className="font-display text-[2.5rem] font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
-              style={{ perspective: 600 }}
             >
-              <AnimatedText text={profile.firstName} className="block text-gradient" />
-              <AnimatedText text={profile.lastName} className="block text-foreground/90" />
+              <motion.span variants={nameLine} className="block text-gradient">
+                {profile.firstName}
+              </motion.span>
+              <motion.span variants={nameLine} className="block text-foreground/90">
+                {profile.lastName}
+              </motion.span>
             </motion.h1>
 
             <motion.p
