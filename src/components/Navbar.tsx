@@ -33,10 +33,10 @@ export function Navbar() {
         opacity: 1,
       }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4"
+      className="fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-3 sm:px-4 sm:pt-4"
     >
       <nav
-        className={`container-page flex items-center justify-between rounded-2xl px-4 py-3 transition-colors duration-300 ${
+        className={`flex w-full max-w-6xl items-center justify-between gap-2 rounded-2xl px-3 py-2.5 sm:px-4 sm:py-3 ${
           scrolled ? "glass glow-ring" : "border border-transparent"
         }`}
       >
@@ -46,17 +46,17 @@ export function Navbar() {
           aria-label={profile.name}
         >
           <Logo
-            size={44}
-            className="h-11 w-11 min-h-11 min-w-11 transition-transform duration-300 group-hover:scale-105"
+            size={40}
+            className="h-9 w-9 min-h-9 min-w-9 transition-transform duration-300 group-hover:scale-105 sm:h-11 sm:w-11 sm:min-h-11 sm:min-w-11"
           />
         </a>
 
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden items-center gap-0.5 lg:flex xl:gap-1">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="relative rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:text-foreground"
+                className="relative rounded-lg px-2 py-2 text-xs text-muted transition-colors hover:text-foreground xl:px-3 xl:text-sm"
               >
                 {link.label}
               </a>
@@ -76,7 +76,7 @@ export function Navbar() {
             type="button"
             aria-label="Toggle menu"
             onClick={() => setMenuOpen((v) => !v)}
-            className="grid h-10 w-10 place-items-center rounded-lg border border-border md:hidden"
+            className="grid h-9 w-9 place-items-center rounded-lg border border-border lg:hidden"
           >
             <div className="space-y-1.5">
               <motion.span
@@ -103,7 +103,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25 }}
-            className="glass absolute inset-x-4 top-20 rounded-2xl p-4 md:hidden"
+            className="glass absolute inset-x-3 top-[4.25rem] rounded-2xl p-4 sm:inset-x-4 sm:top-20 lg:hidden"
           >
             <ul className="flex flex-col gap-1">
               {navLinks.map((link) => (

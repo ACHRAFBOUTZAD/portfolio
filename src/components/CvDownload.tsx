@@ -15,7 +15,7 @@ export function CvDownload({ className = "", variant = "glass" }: CvDownloadProp
     <a
       href={profile.cv}
       download={profile.cvFileName}
-      className={`inline-flex items-center gap-2 rounded-xl px-6 py-3 transition-transform hover:scale-[1.03] active:scale-95 ${styles} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 transition-transform hover:scale-[1.03] active:scale-95 ${styles} ${className}`}
     >
       <span aria-hidden>↓</span>
       Download CV

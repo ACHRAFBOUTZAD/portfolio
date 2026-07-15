@@ -22,7 +22,7 @@ export function Experience() {
   return (
     <section
       id="experience"
-      className="relative scroll-mt-24 border-y border-border bg-background-soft/40 py-24 md:py-32"
+      className="relative scroll-mt-24 border-y border-border bg-background-soft/40 py-16 sm:py-24 md:py-32"
     >
       <div className="container-page">
         <SectionHeading
@@ -31,13 +31,11 @@ export function Experience() {
           subtitle="My journey so far — building, learning and growing."
         />
 
-        <div ref={ref} className="relative pl-8 md:pl-10">
-          {/* Timeline track */}
-          <div className="absolute left-[7px] top-2 h-full w-px bg-border md:left-[11px]" />
-          {/* Scroll-linked progress line */}
+        <div ref={ref} className="relative pl-6 sm:pl-8 md:pl-10">
+          <div className="absolute left-[5px] top-2 h-full w-px bg-border sm:left-[7px] md:left-[11px]" />
           <motion.div
             style={{ scaleY }}
-            className="absolute left-[7px] top-2 h-full w-px origin-top bg-gradient-to-b from-accent via-accent-2 to-accent-3 md:left-[11px]"
+            className="absolute left-[5px] top-2 h-full w-px origin-top bg-gradient-to-b from-accent via-accent-2 to-accent-3 sm:left-[7px] md:left-[11px]"
           />
 
           <div className="space-y-12">
@@ -45,19 +43,19 @@ export function Experience() {
               <Reveal key={item.role + item.company} delay={i * 0.05}>
                 <div className="relative">
                   <ProgressDot progress={scrollYProgress} index={i} total={experience.length} />
-                  <div className="glass rounded-2xl p-6">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <h3 className="font-display text-xl font-semibold">
+                  <div className="glass rounded-2xl p-4 sm:p-6">
+                    <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-2">
+                      <h3 className="font-display text-lg font-semibold sm:text-xl">
                         {item.role}
                       </h3>
-                      <span className="font-mono text-sm text-accent-2">
+                      <span className="font-mono text-xs text-accent-2 sm:text-sm">
                         {item.period}
                       </span>
                     </div>
                     <p className="mt-1 text-sm font-medium text-foreground/80">
                       {item.company} · {item.location}
                     </p>
-                    <ul className="mt-4 space-y-2 text-muted">
+                    <ul className="mt-4 space-y-2 text-sm text-muted sm:text-base">
                       {item.highlights.map((highlight) => (
                         <li key={highlight} className="flex gap-2">
                           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
@@ -95,7 +93,7 @@ function ProgressDot({
   return (
     <motion.span
       style={{ scale }}
-      className="absolute -left-8 top-6 grid h-4 w-4 place-items-center rounded-full border-2 border-accent bg-background md:-left-10"
+      className="absolute -left-6 top-6 grid h-4 w-4 place-items-center rounded-full border-2 border-accent bg-background sm:-left-8 md:-left-10"
     >
       <span className="h-1.5 w-1.5 rounded-full bg-accent" />
     </motion.span>

@@ -10,7 +10,7 @@ export function SectionHeading({
   subtitle?: string;
 }) {
   return (
-    <div className="mb-14 max-w-2xl">
+    <div className="mb-10 max-w-2xl sm:mb-14">
       <Reveal>
         <div className="mb-3 flex items-center gap-3 font-mono text-sm text-accent-2">
           <span>{index}</span>
@@ -24,7 +24,7 @@ export function SectionHeading({
       </Reveal>
       {subtitle && (
         <Reveal delay={0.1}>
-          <p className="mt-4 text-lg text-muted">{subtitle}</p>
+          <p className="mt-3 text-base text-muted sm:mt-4 sm:text-lg">{subtitle}</p>
         </Reveal>
       )}
     </div>

@@ -50,12 +50,12 @@ export function VelocityMarquee({
   const items = Array.from({ length: 6 });
 
   return (
-    <div className="relative z-0 flex flex-nowrap overflow-hidden whitespace-nowrap border-y border-border bg-background-soft/40 py-6">
+    <div className="relative z-0 flex flex-nowrap overflow-hidden whitespace-nowrap border-y border-border bg-background-soft/40 py-4 sm:py-6">
       <motion.div style={{ x }} className="flex flex-nowrap whitespace-nowrap">
         {items.map((_, i) => (
           <span
             key={i}
-            className="mx-6 font-display text-4xl font-bold uppercase tracking-tight text-transparent sm:text-6xl"
+            className="mx-3 font-display text-2xl font-bold uppercase tracking-tight text-transparent sm:mx-6 sm:text-4xl md:text-5xl lg:text-6xl"
             style={{
               WebkitTextStroke: "1px rgba(255,247,237,0.35)",
             }}

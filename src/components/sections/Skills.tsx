@@ -9,7 +9,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="relative scroll-mt-24 border-y border-border bg-background-soft/40 py-24 md:py-32"
+      className="relative scroll-mt-24 border-y border-border bg-background-soft/40 py-16 sm:py-24 md:py-32"
     >
       <div className="container-page">
         <SectionHeading
@@ -18,7 +18,7 @@ export function Skills() {
           subtitle="The technologies I reach for to design, build and ship products."
         />
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {skillGroups.map((group) => (
             <StaggerGroup
               key={group.title}

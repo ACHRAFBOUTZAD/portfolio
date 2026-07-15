@@ -8,7 +8,7 @@ export function Education() {
   return (
     <section
       id="education"
-      className="container-page scroll-mt-24 py-24 md:py-32"
+      className="container-page scroll-mt-24 py-16 sm:py-24 md:py-32"
     >
       <SectionHeading
         index="05"
@@ -20,16 +20,16 @@ export function Education() {
         <div className="space-y-4">
           {education.map((item, i) => (
             <Reveal key={item.degree} delay={i * 0.05}>
-              <div className="glass rounded-2xl p-6">
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 className="font-display text-lg font-semibold">
+              <div className="glass rounded-2xl p-4 sm:p-6">
+                <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-2">
+                  <h3 className="font-display text-base font-semibold sm:text-lg">
                     {item.degree}
                   </h3>
-                  <span className="font-mono text-sm text-accent-2">
+                  <span className="font-mono text-xs text-accent-2 sm:text-sm">
                     {item.period}
                   </span>
                 </div>
-                <p className="mt-2 text-muted">{item.school}</p>
+                <p className="mt-2 text-sm text-muted sm:text-base">{item.school}</p>
               </div>
             </Reveal>
           ))}

@@ -10,11 +10,11 @@ import { profile, stats } from "@/lib/content";
 
 export function About() {
   return (
-    <section id="about" className="container-page scroll-mt-24 py-24 md:py-32">
+    <section id="about" className="container-page scroll-mt-24 py-16 sm:py-24 md:py-32">
       <SectionHeading index="01" title="About me" />
 
       <div className="grid gap-12 md:grid-cols-[1.4fr_1fr] md:gap-16">
-        <div className="space-y-6 text-lg leading-relaxed text-muted">
+        <div className="space-y-5 text-base leading-relaxed text-muted sm:space-y-6 sm:text-lg">
           <Reveal>
             <p>{profile.summary}</p>
           </Reveal>
