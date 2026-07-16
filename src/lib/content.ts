@@ -33,7 +33,7 @@ export const stats = [
   { value: 50, suffix: "%", label: "Team productivity gain" },
   { value: 30, suffix: "%", label: "Wait time reduced" },
   { value: 4, suffix: "+", label: "Platforms delivered" },
-  { value: 1, suffix: "+", label: "Years experience" },
+  { value: 3, suffix: "+", label: "Years experience" },
 ];
 
 export const skillGroups = [

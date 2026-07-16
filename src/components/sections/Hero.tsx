@@ -34,7 +34,7 @@ function HeroPortrait({ showOrbit = true }: { showOrbit?: boolean }) {
       transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
       className="relative z-20 mx-auto w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[420px]"
     >
-      <div className="relative">
+      <div className="relative z-30">
         <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-accent/30 via-accent-2/20 to-accent-3/20 blur-2xl sm:-inset-4" />
         <div className="glass glow-ring relative aspect-[4/5] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
           <ProfileImage
@@ -51,7 +51,7 @@ function HeroPortrait({ showOrbit = true }: { showOrbit?: boolean }) {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="hidden md:block"
+          className="relative z-10 mt-8 hidden pt-2 md:block lg:mt-10"
         >
           <Orbit />
         </motion.div>

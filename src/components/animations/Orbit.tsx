@@ -12,18 +12,18 @@ type Ring = {
 
 const rings: Ring[] = [
   {
-    radius: 138,
+    radius: 112,
     duration: 42,
     items: ["Software Engineer", "Spring Boot", "Kafka", "DevOps"],
   },
   {
-    radius: 92,
+    radius: 74,
     duration: 30,
     reverse: true,
     items: ["Realtime", "MQTT", "WebSockets", "CI/CD"],
   },
   {
-    radius: 48,
+    radius: 38,
     duration: 20,
     items: ["FastAPI", "Docker"],
   },
@@ -52,11 +52,11 @@ function OrbitRing({ radius, duration, reverse, items }: Ring) {
             }}
           >
             <motion.div
-              className="relative z-30 -translate-x-1/2 -translate-y-1/2"
+              className="relative -translate-x-1/2 -translate-y-1/2"
               animate={{ rotate: reverse ? 360 : -360 }}
               transition={{ duration, repeat: Infinity, ease: "linear" }}
             >
-              <span className="glass relative z-30 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium text-foreground shadow-lg">
+              <span className="glass whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium text-foreground shadow-lg">
                 {item}
               </span>
             </motion.div>
@@ -69,19 +69,19 @@ function OrbitRing({ radius, duration, reverse, items }: Ring) {
 
 export function Orbit() {
   return (
-    <div className="relative z-30 mx-auto mt-4 h-[300px] w-full max-w-[400px] overflow-visible">
-      {/* Center shifted up so bottom orbit pills stay above the marquee strip */}
-      <div className="absolute left-1/2 top-[38%] z-20 -translate-x-1/2 -translate-y-1/2">
+    <div className="relative mx-auto h-[230px] w-full max-w-[380px] sm:h-[250px] sm:max-w-[400px]">
+      {/* Center pulled down so rings stay below the photo card */}
+      <div className="absolute left-1/2 top-[64%] z-10 -translate-x-1/2 -translate-y-1/2">
         <motion.div
           animate={{ scale: [1, 1.08, 1] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="relative grid h-16 w-16 place-items-center rounded-full shadow-[0_0_40px_-4px_var(--accent)]"
+          className="relative grid h-14 w-14 place-items-center rounded-full shadow-[0_0_40px_-4px_var(--accent)] sm:h-16 sm:w-16"
         >
-          <Logo size={56} className="h-14 w-14" />
+          <Logo size={52} className="h-12 w-12 sm:h-14 sm:w-14" />
         </motion.div>
       </div>
 
-      <div className="absolute inset-x-0 top-[38%] h-0 -translate-y-1/2">
+      <div className="absolute inset-x-0 top-[64%] h-0 -translate-y-1/2">
         {rings.map((ring) => (
           <OrbitRing key={ring.radius} {...ring} />
         ))}
