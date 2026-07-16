@@ -46,8 +46,8 @@ export function Navbar() {
           aria-label={profile.name}
         >
           <Logo
-            size={40}
-            className="h-9 w-9 min-h-9 min-w-9 transition-transform duration-300 group-hover:scale-105 sm:h-11 sm:w-11 sm:min-h-11 sm:min-w-11"
+            size={64}
+            className="h-12 w-12 min-h-12 min-w-12 transition-transform duration-300 group-hover:scale-105 sm:h-14 sm:w-14 sm:min-h-14 sm:min-w-14 lg:h-16 lg:w-16 lg:min-h-16 lg:min-w-16"
           />
         </a>
 
