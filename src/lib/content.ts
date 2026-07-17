@@ -88,6 +88,7 @@ export type Project = {
   year: string;
   href?: string;
   accent: string;
+  image?: string;
 };
 
 export const projects: Project[] = [
@@ -97,8 +98,9 @@ export const projects: Project[] = [
       "Live operations platform streaming station status, order progress, queue depth, throughput, and efficiency KPIs with event-driven processing and role-based views.",
     tags: ["Next.js", "Spring Boot", "WebSockets", "Kafka", "MySQL"],
     year: "2025",
-    href: "#",
+    href: "https://github.com/ACHRAFBOUTZAD/plant-ops",
     accent: "#ff7d00",
+    image: "/dashboard-monitoring.png",
   },
   {
     title: "Industrial IoT Telemetry System",
@@ -108,6 +110,7 @@ export const projects: Project[] = [
     year: "2025",
     href: "#",
     accent: "#3ec5da",
+    image: "/iot-platform.png",
   },
   {
     title: "Service Monitoring Platform",
@@ -124,8 +127,9 @@ export const projects: Project[] = [
       "Configurable workflows with order-state transitions, assignment rules, SLA timers, live status sync, and analytics for operational decision-making.",
     tags: ["FastAPI", "Next.js", "WebSockets", "MySQL"],
     year: "2025",
-    href: "#",
+    href: "https://github.com/ACHRAFBOUTZAD/Workflow-Orchestration-System",
     accent: "#ffb066",
+    image: "/orchestration-image.png",
   },
 ];
 

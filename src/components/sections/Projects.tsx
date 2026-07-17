@@ -8,6 +8,7 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
+import Image from "next/image";
 import type { MouseEvent } from "react";
 import { useRef } from "react";
 import { Reveal } from "@/components/animations/Reveal";
@@ -35,61 +36,86 @@ function ProjectCard({
 
   return (
     <motion.a
-      href={project.href}
+      href={project.href ?? "#"}
+      target={project.href?.startsWith("http") ? "_blank" : undefined}
+      rel={project.href?.startsWith("http") ? "noopener noreferrer" : undefined}
       onMouseMove={handleMouseMove}
       whileHover={{ y: layout === "stack" ? -4 : -8 }}
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-surface p-6 sm:p-8 ${
+      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-surface ${
         layout === "scroll"
-          ? "w-[85vw] shrink-0 sm:w-[26rem] md:p-10"
+          ? "w-[85vw] shrink-0 sm:w-[28rem]"
           : "w-full"
       }`}
     >
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{ background }}
       />
 
-      <div className="relative z-10 flex items-center justify-between">
-        <span
-          className="grid h-12 w-12 place-items-center rounded-2xl text-lg font-bold sm:h-14 sm:w-14 sm:text-xl"
-          style={{
-            background: `${project.accent}1f`,
-            color: project.accent,
-            boxShadow: `0 0 40px -8px ${project.accent}`,
-          }}
-        >
-          {project.title.charAt(0)}
-        </span>
-        <span className="font-mono text-4xl font-bold text-white/[0.04] sm:text-6xl">
-          0{index + 1}
-        </span>
-      </div>
-
-      <h3 className="relative z-10 mt-6 font-display text-xl font-semibold sm:mt-8 sm:text-2xl md:text-3xl">
-        {project.title}
-      </h3>
-      <p className="relative z-10 mt-3 flex-1 text-sm text-muted sm:text-base">
-        {project.description}
-      </p>
-
-      <div className="relative z-10 mt-5 flex flex-wrap gap-2 sm:mt-6">
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-md border border-border bg-background/60 px-2.5 py-1 text-xs text-muted"
-          >
-            {tag}
+      {project.image ? (
+        <div className="relative aspect-[16/10] w-full overflow-hidden">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            unoptimized
+            sizes="(max-width: 640px) 85vw, 28rem"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent" />
+          <span className="absolute right-4 top-4 z-10 font-mono text-3xl font-bold text-white/25 sm:right-5 sm:top-5 sm:text-4xl">
+            0{index + 1}
           </span>
-        ))}
-      </div>
+        </div>
+      ) : (
+        <div className="relative flex items-center justify-between px-6 pt-6 sm:px-8 sm:pt-8 md:px-10 md:pt-10">
+          <span
+            className="grid h-12 w-12 place-items-center rounded-2xl text-lg font-bold sm:h-14 sm:w-14 sm:text-xl"
+            style={{
+              background: `${project.accent}1f`,
+              color: project.accent,
+              boxShadow: `0 0 40px -8px ${project.accent}`,
+            }}
+          >
+            {project.title.charAt(0)}
+          </span>
+          <span className="font-mono text-4xl font-bold text-white/[0.04] sm:text-6xl">
+            0{index + 1}
+          </span>
+        </div>
+      )}
 
-      <div className="relative z-10 mt-6 flex items-center gap-2 text-sm font-medium text-accent sm:mt-8">
-        View project
-        <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-          →
-        </span>
+      <div
+        className={`relative z-10 flex flex-1 flex-col px-6 pb-6 sm:px-8 sm:pb-8 md:px-10 md:pb-10 ${
+          project.image ? "pt-5 sm:pt-6" : "pt-6 sm:pt-8"
+        }`}
+      >
+        <h3 className="font-display text-xl font-semibold sm:text-2xl md:text-3xl">
+          {project.title}
+        </h3>
+        <p className="mt-3 flex-1 text-sm text-muted sm:text-base">
+          {project.description}
+        </p>
+
+        <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-md border border-border bg-background/60 px-2.5 py-1 text-xs text-muted"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-6 flex items-center gap-2 text-sm font-medium text-accent sm:mt-8">
+          View project
+          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+            →
+          </span>
+        </div>
       </div>
     </motion.a>
   );
