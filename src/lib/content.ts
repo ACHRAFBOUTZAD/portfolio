@@ -120,6 +120,7 @@ export const projects: Project[] = [
     year: "2025",
     href: "#",
     accent: "#e66235",
+    image: "/moritoring-service.jpg",
   },
   {
     title: "Workflow Orchestration System",

@@ -42,9 +42,9 @@ function ProjectCard({
       onMouseMove={handleMouseMove}
       whileHover={{ y: layout === "stack" ? -4 : -8 }}
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-surface ${
+      className={`group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-surface ${
         layout === "scroll"
-          ? "w-[85vw] shrink-0 sm:w-[28rem]"
+          ? "h-[min(34rem,calc(100vh-11rem))] w-[22rem] shrink-0 xl:w-[24rem]"
           : "w-full"
       }`}
     >
@@ -55,22 +55,26 @@ function ProjectCard({
       />
 
       {project.image ? (
-        <div className="relative aspect-[16/10] w-full overflow-hidden">
+        <div
+          className={`relative w-full shrink-0 overflow-hidden ${
+            layout === "scroll" ? "h-40 xl:h-44" : "aspect-[16/10]"
+          }`}
+        >
           <Image
             src={project.image}
             alt={project.title}
             fill
             unoptimized
-            sizes="(max-width: 640px) 85vw, 28rem"
+            sizes="(max-width: 640px) 85vw, 24rem"
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-surface/25 to-transparent" />
           <span className="absolute right-4 top-4 z-10 font-mono text-3xl font-bold text-white/25 sm:right-5 sm:top-5 sm:text-4xl">
             0{index + 1}
           </span>
         </div>
       ) : (
-        <div className="relative flex items-center justify-between px-6 pt-6 sm:px-8 sm:pt-8 md:px-10 md:pt-10">
+        <div className="relative flex shrink-0 items-center justify-between px-6 pt-6 sm:px-8 sm:pt-8">
           <span
             className="grid h-12 w-12 place-items-center rounded-2xl text-lg font-bold sm:h-14 sm:w-14 sm:text-xl"
             style={{
@@ -81,36 +85,36 @@ function ProjectCard({
           >
             {project.title.charAt(0)}
           </span>
-          <span className="font-mono text-4xl font-bold text-white/[0.04] sm:text-6xl">
+          <span className="font-mono text-4xl font-bold text-white/[0.04] sm:text-5xl">
             0{index + 1}
           </span>
         </div>
       )}
 
       <div
-        className={`relative z-10 flex flex-1 flex-col px-6 pb-6 sm:px-8 sm:pb-8 md:px-10 md:pb-10 ${
-          project.image ? "pt-5 sm:pt-6" : "pt-6 sm:pt-8"
+        className={`relative z-10 flex min-h-0 flex-1 flex-col px-5 pb-5 sm:px-6 sm:pb-6 ${
+          project.image ? "pt-4" : "pt-5 sm:pt-6"
         }`}
       >
-        <h3 className="font-display text-xl font-semibold sm:text-2xl md:text-3xl">
+        <h3 className="font-display text-lg font-semibold leading-snug sm:text-xl xl:text-2xl">
           {project.title}
         </h3>
-        <p className="mt-3 flex-1 text-sm text-muted sm:text-base">
+        <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted">
           {project.description}
         </p>
 
-        <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
+        <div className="mt-4 flex flex-wrap gap-1.5">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-md border border-border bg-background/60 px-2.5 py-1 text-xs text-muted"
+              className="rounded-md border border-border bg-background/60 px-2 py-0.5 text-[11px] text-muted"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <div className="mt-6 flex items-center gap-2 text-sm font-medium text-accent sm:mt-8">
+        <div className="mt-auto flex items-center gap-2 pt-4 text-sm font-medium text-accent">
           View project
           <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
             →
@@ -121,18 +125,32 @@ function ProjectCard({
   );
 }
 
-function ProjectsHeading() {
+function ProjectsHeading({ compact = false }: { compact?: boolean }) {
   return (
     <>
       <Reveal>
-        <div className="mb-3 flex items-center gap-3 font-mono text-sm text-accent-2">
+        <div
+          className={`flex items-center gap-3 font-mono text-sm text-accent-2 ${
+            compact ? "mb-2" : "mb-3"
+          }`}
+        >
           <span>03</span>
           <span className="h-px w-10 bg-gradient-to-r from-accent-2 to-transparent" />
         </div>
       </Reveal>
-      <div className="mb-8 flex flex-col gap-3 sm:mb-10 lg:flex-row lg:items-end lg:justify-between lg:gap-4">
+      <div
+        className={`flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between lg:gap-4 ${
+          compact ? "mb-5" : "mb-8 sm:mb-10"
+        }`}
+      >
         <Reveal delay={0.05}>
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+          <h2
+            className={`font-display font-bold tracking-tight ${
+              compact
+                ? "text-3xl xl:text-4xl"
+                : "text-3xl sm:text-4xl md:text-5xl"
+            }`}
+          >
             Selected work
           </h2>
         </Reveal>
@@ -192,12 +210,15 @@ function ProjectsDesktop() {
 
   return (
     <section ref={targetRef} className="relative hidden h-[320vh] lg:block">
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
-        <div className="container-page">
-          <ProjectsHeading />
+      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden py-8">
+        <div className="container-page shrink-0">
+          <ProjectsHeading compact />
         </div>
 
-        <motion.div style={{ x }} className="flex gap-6 pl-6 md:gap-8">
+        <motion.div
+          style={{ x }}
+          className="flex shrink-0 items-stretch gap-6 pl-6 md:gap-8"
+        >
           {projects.map((project, index) => (
             <ProjectCard
               key={project.title}
@@ -206,10 +227,10 @@ function ProjectsDesktop() {
               layout="scroll"
             />
           ))}
-          <div className="grid w-[20rem] shrink-0 place-items-center">
+          <div className="grid w-[18rem] shrink-0 place-items-center self-stretch">
             <a
               href="#contact"
-              className="glass glow-ring flex flex-col items-center gap-3 rounded-3xl px-10 py-12 text-center"
+              className="glass glow-ring flex h-full max-h-[min(34rem,calc(100vh-11rem))] w-full flex-col items-center justify-center gap-3 rounded-3xl px-8 py-10 text-center"
             >
               <span className="font-display text-2xl font-semibold">
                 Have an idea?
@@ -219,7 +240,7 @@ function ProjectsDesktop() {
           </div>
         </motion.div>
 
-        <div className="container-page mt-10">
+        <div className="container-page mt-6 shrink-0">
           <div className="h-1 w-full overflow-hidden rounded-full bg-border">
             <motion.div
               style={{ width: progressBar }}
