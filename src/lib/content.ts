@@ -12,7 +12,7 @@ export const profile = {
   phone: "+212 695 143 629",
   email: "achrafboutzad@gmail.com",
   website: "https://achrafboutzad.com",
-  image: "/portpholio.png",
+  image: "/portpholio.webp",
   logo: "/achraf-logo-1.png",
   cv: "/Achraf_Boutzad_CV.pdf",
   cvFileName: "Achraf_Boutzad_CV.pdf",
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     year: "2025",
     href: "https://github.com/ACHRAFBOUTZAD/plant-ops",
     accent: "#ff7d00",
-    image: "/dashboard-monitoring.png",
+    image: "/dashboard-monitoring.webp",
   },
   {
     title: "Industrial IoT Telemetry System",
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     year: "2025",
     href: "#",
     accent: "#3ec5da",
-    image: "/iot-platform.png",
+    image: "/iot-platform.webp",
   },
   {
     title: "Service Monitoring Platform",
@@ -120,7 +120,7 @@ export const projects: Project[] = [
     year: "2025",
     href: "#",
     accent: "#e66235",
-    image: "/moritoring-service.jpg",
+    image: "/moritoring-service.webp",
   },
   {
     title: "Workflow Orchestration System",
@@ -130,7 +130,7 @@ export const projects: Project[] = [
     year: "2025",
     href: "https://github.com/ACHRAFBOUTZAD/Workflow-Orchestration-System",
     accent: "#ffb066",
-    image: "/orchestration-image.png",
+    image: "/orchestration-image.webp",
   },
 ];
 

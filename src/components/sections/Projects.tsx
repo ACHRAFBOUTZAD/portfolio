@@ -2,15 +2,11 @@
 
 import {
   motion,
-  useMotionTemplate,
-  useMotionValue,
   useScroll,
-  useSpring,
   useTransform,
 } from "motion/react";
 import Image from "next/image";
-import type { MouseEvent } from "react";
-import { useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Reveal } from "@/components/animations/Reveal";
 import { projects, type Project } from "@/lib/content";
 
@@ -23,37 +19,17 @@ function ProjectCard({
   index: number;
   layout?: "scroll" | "stack";
 }) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
-  };
-
-  const background = useMotionTemplate`radial-gradient(400px circle at ${mouseX}px ${mouseY}px, ${project.accent}22, transparent 70%)`;
-
   return (
-    <motion.a
+    <a
       href={project.href ?? "#"}
       target={project.href?.startsWith("http") ? "_blank" : undefined}
       rel={project.href?.startsWith("http") ? "noopener noreferrer" : undefined}
-      onMouseMove={handleMouseMove}
-      whileHover={{ y: layout === "stack" ? -4 : -8 }}
-      transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      className={`group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-surface ${
+      className={`group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-surface transition-transform duration-300 hover:-translate-y-1 ${
         layout === "scroll"
           ? "h-[min(34rem,calc(100vh-11rem))] w-[22rem] shrink-0 xl:w-[24rem]"
           : "w-full"
       }`}
     >
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{ background }}
-      />
-
       {project.image ? (
         <div
           className={`relative w-full shrink-0 overflow-hidden ${
@@ -65,6 +41,7 @@ function ProjectCard({
             alt={project.title}
             fill
             unoptimized
+            loading="lazy"
             sizes="(max-width: 640px) 85vw, 24rem"
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
@@ -121,7 +98,7 @@ function ProjectCard({
           </span>
         </div>
       </div>
-    </motion.a>
+    </a>
   );
 }
 
@@ -167,7 +144,7 @@ function ProjectsHeading({ compact = false }: { compact?: boolean }) {
 
 function ProjectsMobile() {
   return (
-    <section className="py-16 sm:py-20 lg:hidden">
+    <section className="py-16 sm:py-20">
       <div className="container-page">
         <ProjectsHeading />
         <div className="flex flex-col gap-5 sm:gap-6">
@@ -198,18 +175,11 @@ function ProjectsMobile() {
 function ProjectsDesktop() {
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
-
-  const smooth = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 24,
-    restDelta: 0.001,
-  });
-
-  const x = useTransform(smooth, [0, 1], ["2%", "-78%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["2%", "-78%"]);
   const progressBar = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section ref={targetRef} className="relative hidden h-[320vh] lg:block">
+    <section ref={targetRef} className="relative h-[280vh]">
       <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden py-8">
         <div className="container-page shrink-0">
           <ProjectsHeading compact />
@@ -217,7 +187,7 @@ function ProjectsDesktop() {
 
         <motion.div
           style={{ x }}
-          className="flex shrink-0 items-stretch gap-6 pl-6 md:gap-8"
+          className="flex shrink-0 items-stretch gap-6 pl-6 will-change-transform md:gap-8"
         >
           {projects.map((project, index) => (
             <ProjectCard
@@ -254,10 +224,19 @@ function ProjectsDesktop() {
 }
 
 export function Projects() {
+  const [desktop, setDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const update = () => setDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   return (
     <div id="work" className="scroll-mt-24">
-      <ProjectsMobile />
-      <ProjectsDesktop />
+      {desktop ? <ProjectsDesktop /> : <ProjectsMobile />}
     </div>
   );
 }

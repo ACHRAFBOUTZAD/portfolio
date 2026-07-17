@@ -20,9 +20,16 @@ export function Navbar() {
   useMotionValueEvent(scrollY, "change", (current) => {
     const previous = scrollY.getPrevious() ?? 0;
     const diff = current - previous;
-    setScrolled(current > 24);
+    const nextScrolled = current > 24;
+    setScrolled((prev) => (prev === nextScrolled ? prev : nextScrolled));
     if (menuOpen) return;
-    setHidden(diff > 8 && current > 200);
+    const nextHidden = diff > 8 && current > 200;
+    const nextVisible = diff < -8 || current <= 200;
+    if (nextHidden) {
+      setHidden((prev) => (prev ? prev : true));
+    } else if (nextVisible) {
+      setHidden((prev) => (prev ? false : prev));
+    }
   });
 
   return (

@@ -207,6 +207,55 @@ body::after {
   .glow-ring {
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 20px 60px -20px rgba(255, 125, 0, 0.4);
   }
+
+  @keyframes aurora-drift {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    33% {
+      transform: translate3d(40px, 24px, 0) scale(1.06);
+    }
+    66% {
+      transform: translate3d(-28px, 36px, 0) scale(0.96);
+    }
+  }
+
+  @keyframes orbit-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes orbit-label-spin {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(-360deg);
+    }
+  }
+
+  .aurora-blob {
+    animation-name: aurora-drift;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+
+  .orbit-ring {
+    animation-name: orbit-spin;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+
+  .orbit-label {
+    animation-name: orbit-label-spin;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -217,5 +266,11 @@ body::after {
   .text-gradient-animated {
     animation: none;
     background-position: 0% center;
+  }
+
+  .aurora-blob,
+  .orbit-ring,
+  .orbit-label {
+    animation: none !important;
   }
 }

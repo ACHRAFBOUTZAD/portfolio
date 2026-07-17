@@ -68,9 +68,7 @@ export function Hero() {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const blobY = useTransform(scrollYProgress, [0, 1], [0, -160]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
   return (
     <section
@@ -78,14 +76,11 @@ export function Hero() {
       ref={ref}
       className="relative z-10 overflow-x-clip pb-12 pt-24 sm:pb-16 sm:pt-28 lg:pb-28 lg:pt-28"
     >
-      <motion.div style={{ y: blobY }} className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10">
         <Aurora />
-      </motion.div>
+      </div>
 
-      <motion.div
-        style={{ opacity, scale, y }}
-        className="container-page"
-      >
+      <motion.div style={{ opacity, y }} className="container-page">
         <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
           <motion.div
             variants={container}

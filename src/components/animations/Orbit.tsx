@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import { Logo } from "@/components/Logo";
 
 type Ring = {
@@ -31,11 +30,12 @@ const rings: Ring[] = [
 
 function OrbitRing({ radius, duration, reverse, items }: Ring) {
   return (
-    <motion.div
-      className="pointer-events-none absolute inset-0"
-      style={{ borderRadius: "9999px" }}
-      animate={{ rotate: reverse ? -360 : 360 }}
-      transition={{ duration, repeat: Infinity, ease: "linear" }}
+    <div
+      className="orbit-ring pointer-events-none absolute inset-0"
+      style={{
+        animationDuration: `${duration}s`,
+        animationDirection: reverse ? "reverse" : "normal",
+      }}
     >
       <div
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-border/70"
@@ -48,37 +48,34 @@ function OrbitRing({ radius, duration, reverse, items }: Ring) {
             key={item}
             className="absolute left-1/2 top-1/2"
             style={{
-              transform: `rotate(${angle}deg) translate(${radius}px) rotate(${-angle}deg)`,
+              transform: `rotate(${angle}deg) translate(${radius}px)`,
             }}
           >
-            <motion.div
-              className="relative -translate-x-1/2 -translate-y-1/2"
-              animate={{ rotate: reverse ? 360 : -360 }}
-              transition={{ duration, repeat: Infinity, ease: "linear" }}
+            <div
+              className="orbit-label relative"
+              style={{
+                animationDuration: `${duration}s`,
+                animationDirection: reverse ? "reverse" : "normal",
+              }}
             >
-              <span className="glass whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium text-foreground shadow-lg">
+              <span className="whitespace-nowrap rounded-full border border-border bg-surface/95 px-3 py-1.5 text-xs font-medium text-foreground shadow-lg">
                 {item}
               </span>
-            </motion.div>
+            </div>
           </div>
         );
       })}
-    </motion.div>
+    </div>
   );
 }
 
 export function Orbit() {
   return (
     <div className="relative mx-auto h-[230px] w-full max-w-[380px] sm:h-[250px] sm:max-w-[400px]">
-      {/* Center pulled down so rings stay below the photo card */}
       <div className="absolute left-1/2 top-[64%] z-10 -translate-x-1/2 -translate-y-1/2">
-        <motion.div
-          animate={{ scale: [1, 1.08, 1] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="relative grid h-14 w-14 place-items-center rounded-full shadow-[0_0_40px_-4px_var(--accent)] sm:h-16 sm:w-16"
-        >
+        <div className="relative grid h-14 w-14 place-items-center rounded-full shadow-[0_0_40px_-4px_var(--accent)] sm:h-16 sm:w-16">
           <Logo size={52} className="h-12 w-12 sm:h-14 sm:w-14" />
-        </motion.div>
+        </div>
       </div>
 
       <div className="absolute inset-x-0 top-[64%] h-0 -translate-y-1/2">
