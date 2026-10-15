@@ -1,65 +1,53 @@
-"use client";
-
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/animations/Reveal";
-import { StaggerGroup, StaggerItem } from "@/components/animations/Stagger";
-import { Parallax } from "@/components/animations/Parallax";
-import { CountUp } from "@/components/animations/CountUp";
-import { CvDownload } from "@/components/CvDownload";
-import { profile, stats } from "@/lib/content";
+import { profile } from "@/lib/content";
+
+const details = [
+  { label: "Location", value: profile.location },
+  { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
+  {
+    label: "Phone",
+    value: profile.phone,
+    href: `tel:${profile.phone.replace(/\s/g, "")}`,
+  },
+  { label: "Languages", value: profile.languages },
+];
 
 export function About() {
   return (
-    <section id="about" className="container-page scroll-mt-24 py-16 sm:py-24 md:py-32">
-      <SectionHeading index="01" title="About me" />
+    <section id="about" className="container-page scroll-mt-24 py-16 sm:py-24">
+      <SectionHeading title="About me" />
 
-      <div className="grid gap-12 md:grid-cols-[1.4fr_1fr] md:gap-16">
-        <div className="space-y-5 text-base leading-relaxed text-muted sm:space-y-6 sm:text-lg">
-          <Reveal>
-            <p>{profile.summary}</p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p>
-              At Haldorix, I work with MARWA Corporation on operational software —
-              from real-time production dashboards and WebSocket-driven updates to
-              CI/CD automation and event-driven architectures with Kafka and MQTT.
-            </p>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <span className="glass rounded-full px-4 py-2 text-sm text-foreground">
-                📍 {profile.location}
-              </span>
-              <span className="glass rounded-full px-4 py-2 text-sm text-foreground">
-                ✉️ {profile.email}
-              </span>
-              <span className="glass rounded-full px-4 py-2 text-sm text-foreground">
-                📞 {profile.phone}
-              </span>
-            </div>
-          </Reveal>
-          <Reveal delay={0.25}>
-            <div className="pt-4">
-              <CvDownload />
-            </div>
-          </Reveal>
-        </div>
+      <div className="grid gap-12 md:grid-cols-[1.5fr_1fr] md:gap-16">
+        <Reveal className="max-w-[65ch] space-y-5 text-base leading-relaxed text-muted sm:text-lg">
+          {profile.about.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </Reveal>
 
-        <Parallax offset={40}>
-          <StaggerGroup className="grid grid-cols-2 gap-4">
-            {stats.map((stat) => (
-              <StaggerItem
-                key={stat.label}
-                className="glass glow-ring rounded-2xl p-6 text-center"
-              >
-                <div className="font-display text-3xl font-bold text-gradient sm:text-4xl">
-                  <CountUp value={stat.value} suffix={stat.suffix} />
-                </div>
-                <div className="mt-1 text-sm text-muted">{stat.label}</div>
-              </StaggerItem>
+        <Reveal delay={0.1}>
+          <dl className="space-y-6 border-l border-border pl-6">
+            {details.map((detail) => (
+              <div key={detail.label}>
+                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted-dark">
+                  {detail.label}
+                </dt>
+                <dd className="mt-1 break-words text-foreground">
+                  {detail.href ? (
+                    <a
+                      href={detail.href}
+                      className="transition-colors hover:text-accent"
+                    >
+                      {detail.value}
+                    </a>
+                  ) : (
+                    detail.value
+                  )}
+                </dd>
+              </div>
             ))}
-          </StaggerGroup>
-        </Parallax>
+          </dl>
+        </Reveal>
       </div>
     </section>
   );

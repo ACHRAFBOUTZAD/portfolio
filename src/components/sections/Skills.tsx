@@ -1,48 +1,35 @@
-"use client";
-
-import { motion } from "motion/react";
 import { SectionHeading } from "@/components/SectionHeading";
-import { StaggerGroup, StaggerItem } from "@/components/animations/Stagger";
+import { Reveal } from "@/components/animations/Reveal";
 import { skillGroups } from "@/lib/content";
 
 export function Skills() {
   return (
     <section
       id="skills"
-      className="relative scroll-mt-24 border-y border-border bg-background-soft/40 py-16 sm:py-24 md:py-32"
+      className="scroll-mt-24 border-y border-border bg-background-soft py-16 sm:py-24"
     >
       <div className="container-page">
-        <SectionHeading
-          index="02"
-          title="Skills & tools"
-          subtitle="The technologies I reach for to design, build and ship products."
-        />
+        <SectionHeading title="Skills & tools" />
 
-        <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-          {skillGroups.map((group) => (
-            <StaggerGroup
-              key={group.title}
-              className="glass rounded-2xl p-6"
-            >
-              <StaggerItem>
-                <h3 className="mb-5 font-display text-xl font-semibold">
+        <div className="grid gap-x-12 md:grid-cols-2">
+          {skillGroups.map((group, i) => (
+            <Reveal key={group.title} delay={(i % 2) * 0.05}>
+              <div className="border-t border-border pb-8 pt-5">
+                <h3 className="mb-4 font-display text-lg font-semibold">
                   {group.title}
                 </h3>
-              </StaggerItem>
-              <div className="flex flex-wrap gap-2.5">
-                {group.items.map((item) => (
-                  <StaggerItem key={item}>
-                    <motion.span
-                      whileHover={{ y: -3, scale: 1.05 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                      className="inline-block rounded-lg border border-border bg-surface px-3 py-1.5 text-sm text-muted transition-colors hover:border-accent/50 hover:text-foreground"
+                <ul className="flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-md border border-border bg-surface px-3 py-1.5 text-sm text-foreground/85"
                     >
                       {item}
-                    </motion.span>
-                  </StaggerItem>
-                ))}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </StaggerGroup>
+            </Reveal>
           ))}
         </div>
       </div>

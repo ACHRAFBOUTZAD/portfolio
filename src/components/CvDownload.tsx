@@ -2,20 +2,20 @@ import { profile } from "@/lib/content";
 
 type CvDownloadProps = {
   className?: string;
-  variant?: "primary" | "glass";
+  variant?: "primary" | "secondary";
 };
 
-export function CvDownload({ className = "", variant = "glass" }: CvDownloadProps) {
+export function CvDownload({ className = "", variant = "secondary" }: CvDownloadProps) {
   const styles =
     variant === "primary"
-      ? "bg-gradient-to-r from-accent to-accent-2 font-semibold text-ink-500 shadow-lg shadow-accent/30"
-      : "glass font-medium text-foreground hover:bg-white/10";
+      ? "bg-accent font-semibold text-ink-500 hover:bg-tangerine-600"
+      : "border border-border font-medium text-foreground hover:border-muted-dark hover:bg-surface";
 
   return (
     <a
       href={profile.cv}
       download={profile.cvFileName}
-      className={`inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 transition-transform hover:scale-[1.03] active:scale-95 ${styles} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 transition-colors active:scale-[0.98] ${styles} ${className}`}
     >
       <span aria-hidden>↓</span>
       Download CV

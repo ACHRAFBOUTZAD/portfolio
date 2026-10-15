@@ -14,7 +14,7 @@ export function Logo({
       alt={`${profile.name} logo`}
       width={size}
       height={size}
-      priority
+      loading="eager"
       unoptimized
       className={`object-contain mix-blend-screen ${className}`}
     />

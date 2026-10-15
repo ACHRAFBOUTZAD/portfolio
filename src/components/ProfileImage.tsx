@@ -16,8 +16,8 @@ export function ProfileImage({
 
   if (failed) {
     return (
-      <div className="grid h-full w-full place-items-center bg-gradient-to-br from-surface via-teal-200 to-surface">
-        <span className="font-display text-6xl font-bold text-gradient sm:text-7xl">
+      <div className="grid h-full w-full place-items-center bg-surface">
+        <span className="font-display text-6xl font-semibold text-accent sm:text-7xl">
           {initials}
         </span>
       </div>
@@ -29,7 +29,8 @@ export function ProfileImage({
       src={src}
       alt={alt}
       fill
-      priority
+      loading="eager"
+      fetchPriority="high"
       sizes="(max-width: 768px) 80vw, 420px"
       className="object-cover"
       onError={() => setFailed(true)}

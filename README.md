@@ -2,11 +2,11 @@
 
 <img src="public/achraf-logo-1.png" alt="Achraf Boutzad logo" width="90" />
 
-# Achraf Boutzad — Portfolio
+# Achraf Boutzad: Portfolio
 
 **Software Engineer · DevOps Engineer**
 
-Personal portfolio showcasing real-time operational software — dashboards, monitoring systems, APIs, and IoT integrations.
+Personal portfolio covering my work on real-time operational software: dashboards, monitoring systems, APIs, and IoT integrations.
 
 [**achrafboutzad.com**](https://achrafboutzad.com) · [LinkedIn](https://www.linkedin.com/in/achraf-boutzad/) · [Email](mailto:achrafboutzad@gmail.com)
 
@@ -16,18 +16,18 @@ Personal portfolio showcasing real-time operational software — dashboards, mon
 
 ## About
 
-This is the source code of my personal portfolio, a fully static, animated single-page site built with the latest Next.js and deployed to GitHub Pages under a custom domain.
+This is the source code of my personal portfolio, a static single-page site built with Next.js and deployed to GitHub Pages under a custom domain.
 
-It highlights my work at **Haldorix — MARWA Corporation**, where I build production monitoring platforms, IoT telemetry systems, and workflow orchestration tools using Spring Boot, FastAPI, Next.js, Kafka, MQTT, and WebSockets.
+It covers my work at **Haldorix** for **MARWA Corporation** (Jul 2025 - Jul 2026), where I built real-time factory dashboards, monitoring workflows, and the delivery pipelines behind them using Spring Boot, FastAPI, Next.js, Kafka, MQTT, WebSockets, Docker, and Kubernetes.
 
 ## Features
 
-- **Modern dark design** — custom ink-black palette with tangerine and teal accents
-- **Rich scroll animations** — powered by [Motion](https://motion.dev): aurora background, animated hero name reveal, orbiting skill keywords, scroll-velocity marquee, pinned horizontal project gallery, count-up stats, and parallax effects
-- **Fully responsive** — tuned layouts from mobile to widescreen
-- **SEO ready** — Open Graph metadata, JSON-LD structured data, and semantic markup
-- **CV download** — one-click download of my latest resume
-- **Static export** — zero-server deployment, fast loads, hosted free on GitHub Pages
+- **Dark theme** built on an ink-black palette with a tangerine accent
+- **Light motion** with [Motion](https://motion.dev): a hero name reveal and fade-in on scroll, both disabled when the visitor prefers reduced motion
+- **Responsive** layouts from mobile to widescreen
+- **SEO**: Open Graph metadata, JSON-LD structured data, and semantic markup
+- **CV download** from the nav, hero, and contact section
+- **Static export**, hosted on GitHub Pages
 
 ## Tech Stack
 
@@ -45,7 +45,7 @@ It highlights my work at **Haldorix — MARWA Corporation**, where I build produ
 src/
 ├── app/                  # App Router: layout, page, global styles, icons
 ├── components/
-│   ├── animations/       # Reusable motion primitives (Aurora, Orbit, Parallax, ...)
+│   ├── animations/       # Motion primitives (Reveal, HeroName)
 │   ├── sections/         # Page sections (Hero, About, Skills, Projects, ...)
 │   ├── Navbar.tsx
 │   ├── Logo.tsx
@@ -55,7 +55,7 @@ src/
     └── seo.ts            # Metadata, Open Graph, JSON-LD
 ```
 
-All text, projects, experience, and links live in `src/lib/content.ts` — editing content never requires touching components.
+All text, projects, experience, and links live in `src/lib/content.ts`, so editing content never requires touching components.
 
 ## Getting Started
 
@@ -85,7 +85,7 @@ Every push to `main` triggers a GitHub Actions workflow (`.github/workflows/depl
 
 - **Email:** [achrafboutzad@gmail.com](mailto:achrafboutzad@gmail.com)
 - **LinkedIn:** [linkedin.com/in/achraf-boutzad](https://www.linkedin.com/in/achraf-boutzad/)
-- **Location:** Casablanca, Morocco
+- **Location:** Morocco, open to remote
 
 ---
 

@@ -6,10 +6,10 @@ import type { ReactNode } from "react";
 type Direction = "up" | "down" | "left" | "right" | "none";
 
 const offset: Record<Direction, { x: number; y: number }> = {
-  up: { x: 0, y: 28 },
-  down: { x: 0, y: -28 },
-  left: { x: 28, y: 0 },
-  right: { x: -28, y: 0 },
+  up: { x: 0, y: 16 },
+  down: { x: 0, y: -16 },
+  left: { x: 16, y: 0 },
+  right: { x: -16, y: 0 },
   none: { x: 0, y: 0 },
 };
 
@@ -26,7 +26,7 @@ export function Reveal({
   children,
   direction = "up",
   delay = 0,
-  duration = 0.6,
+  duration = 0.5,
   once = true,
   className,
 }: RevealProps) {
@@ -52,7 +52,7 @@ export function Reveal({
       variants={variants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, amount: 0.3 }}
+      viewport={{ once, amount: 0.2 }}
     >
       {children}
     </motion.div>

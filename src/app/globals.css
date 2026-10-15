@@ -17,8 +17,6 @@
   --muted-dark: #5f7f88;
 
   --accent: #ff7d00;
-  --accent-2: #3ec5da;
-  --accent-3: #e66235;
 }
 
 @theme inline {
@@ -31,8 +29,6 @@
   --color-muted: var(--muted);
   --color-muted-dark: var(--muted-dark);
   --color-accent: var(--accent);
-  --color-accent-2: var(--accent-2);
-  --color-accent-3: var(--accent-3);
 
   /* Full palette (usable as e.g. text-ink-500, bg-tangerine-500) */
   --color-ink-100: #000407;
@@ -87,7 +83,7 @@
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-display);
+  --font-display: var(--font-geist-sans);
 }
 
 * {
@@ -107,32 +103,6 @@ body {
   overflow-x: clip;
 }
 
-/* Ambient background grid + glow */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background:
-    radial-gradient(60rem 60rem at 80% -10%, rgba(255, 125, 0, 0.12), transparent 60%),
-    radial-gradient(50rem 50rem at 0% 20%, rgba(62, 197, 218, 0.10), transparent 55%),
-    radial-gradient(40rem 40rem at 60% 100%, rgba(230, 98, 53, 0.08), transparent 60%);
-  pointer-events: none;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(circle at 50% 0%, black, transparent 85%);
-  pointer-events: none;
-}
-
 ::selection {
   background: rgba(255, 125, 0, 0.35);
   color: #fff;
@@ -146,9 +116,17 @@ body::after {
   background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--accent), var(--accent-2));
+  background: var(--border);
   border-radius: 9999px;
   border: 2px solid var(--background);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-dark);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 @layer utilities {
@@ -164,113 +142,10 @@ body::after {
       padding-inline: 1.5rem;
     }
   }
-
-  .text-gradient {
-    background: linear-gradient(120deg, #fff7ed 5%, var(--accent) 45%, var(--accent-2) 95%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .text-gradient-animated {
-    background: linear-gradient(
-      100deg,
-      #fff7ed 0%,
-      #ff7d00 22%,
-      #3ec5da 48%,
-      #ff7d00 72%,
-      #fff7ed 100%
-    );
-    background-size: 220% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: gradient-shift 7s ease-in-out infinite;
-  }
-
-  @keyframes gradient-shift {
-    0%,
-    100% {
-      background-position: 0% center;
-    }
-    50% {
-      background-position: 100% center;
-    }
-  }
-
-  .glass {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-  }
-
-  .glow-ring {
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 20px 60px -20px rgba(255, 125, 0, 0.4);
-  }
-
-  @keyframes aurora-drift {
-    0%,
-    100% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-    33% {
-      transform: translate3d(40px, 24px, 0) scale(1.06);
-    }
-    66% {
-      transform: translate3d(-28px, 36px, 0) scale(0.96);
-    }
-  }
-
-  @keyframes orbit-spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  @keyframes orbit-label-spin {
-    from {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-    to {
-      transform: translate(-50%, -50%) rotate(-360deg);
-    }
-  }
-
-  .aurora-blob {
-    animation-name: aurora-drift;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    will-change: transform;
-  }
-
-  .orbit-ring {
-    animation-name: orbit-spin;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    will-change: transform;
-  }
-
-  .orbit-label {
-    animation-name: orbit-label-spin;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    will-change: transform;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .text-gradient-animated {
-    animation: none;
-    background-position: 0% center;
-  }
-
-  .aurora-blob,
-  .orbit-ring,
-  .orbit-label {
-    animation: none !important;
   }
 }

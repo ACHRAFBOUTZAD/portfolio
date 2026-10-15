@@ -5,10 +5,11 @@ export const profile = {
   role: "Software Engineer · DevOps Engineer",
   seoTitle: "Achraf Boutzad | Software Engineer & DevOps Engineer",
   seoDescription:
-    "Achraf Boutzad is a Software Engineer and DevOps Engineer building real-time dashboards, monitoring systems, APIs, and IoT integrations for MARWA through Haldorix. Based in Casablanca, Morocco.",
+    "Achraf Boutzad is a Software Engineer and DevOps Engineer building real-time production systems, APIs, IoT integrations, and automated delivery pipelines. Based in Morocco and open to remote work.",
   tagline:
-    "I build real-time operational software — dashboards, monitoring systems, APIs, and IoT integrations that teams rely on every day.",
-  location: "Casablanca, Morocco",
+    "I build real-time production systems, APIs, IoT integrations, and automated delivery pipelines.",
+  location: "Morocco, open to remote",
+  languages: "Arabic (native), French (B2), English (C1)",
   phone: "+212 695 143 629",
   email: "achrafboutzad@gmail.com",
   website: "https://achrafboutzad.com",
@@ -17,66 +18,101 @@ export const profile = {
   cv: "/Achraf_Boutzad_CV.pdf",
   cvFileName: "Achraf_Boutzad_CV.pdf",
   available: true,
-  summary:
-    "Software Engineer and DevOps Engineer with experience delivering operational software for MARWA through Haldorix. I build real-time dashboards, monitoring systems, APIs, and IoT integrations using Spring Boot, FastAPI, Next.js, Kafka, MQTT, WebSockets, and CI/CD.",
+  about: [
+    "I'm a software and DevOps engineer who builds real-time production systems. From July 2025 to July 2026 I worked at Haldorix for MARWA Corporation, building factory dashboards, monitoring workflows, FastAPI services, and WebSocket data flows.",
+    "I also handled deployment there: Docker, CI/CD pipelines, and running the platform on Kubernetes, with Redis caching for frequently requested dashboard data.",
+    "Before that, I did a remote internship with Avionav in Tunisia, working on drone-navigation software, and completed a specialized master's in information systems engineering at the Faculty of Sciences Semlalia in Marrakech.",
+  ],
   socials: [
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/achraf-boutzad/",
     },
-    { label: "Website", href: "https://achrafboutzad.com" },
+    { label: "GitHub", href: "https://github.com/ACHRAFBOUTZAD" },
     { label: "Email", href: "mailto:achrafboutzad@gmail.com" },
   ],
 };
 
-export const stats = [
-  { value: 50, suffix: "%", label: "Team productivity gain" },
-  { value: 30, suffix: "%", label: "Wait time reduced" },
-  { value: 4, suffix: "+", label: "Platforms delivered" },
-  { value: 3, suffix: "+", label: "Years experience" },
-];
-
 export const skillGroups = [
   {
-    title: "Software Engineering",
+    title: "Languages",
+    items: ["Java", "Python", "TypeScript", "JavaScript", "SQL"],
+  },
+  {
+    title: "Backend & APIs",
     items: [
-      "Java / JEE",
       "Spring Boot",
-      "Python",
       "FastAPI",
-      "TypeScript",
-      "Next.js",
-      "React",
-      "Angular",
       "REST APIs",
+      "GraphQL",
+      "gRPC",
+      "WebSockets",
+      "OpenAPI / Swagger",
       "Microservices",
     ],
   },
   {
-    title: "DevOps & Real-time",
+    title: "Messaging & Streaming",
     items: [
-      "Git / GitHub",
-      "CI/CD",
-      "Docker",
-      "Linux",
-      "Kafka",
+      "Apache Kafka",
       "MQTT",
-      "WebSockets",
       "Event-driven architecture",
+      "Asynchronous processing",
     ],
   },
   {
-    title: "Data & Quality",
+    title: "Frontend",
+    items: ["Next.js", "React", "Real-time dashboards", "Data visualization"],
+  },
+  {
+    title: "Databases & Caching",
     items: [
-      "MySQL",
       "PostgreSQL",
-      "Oracle",
-      "SQL / PLSQL",
-      "Power BI",
+      "MySQL",
+      "MongoDB",
+      "Redis",
+      "Schema design",
+      "Query optimization",
+    ],
+  },
+  {
+    title: "DevOps & Cloud",
+    items: [
+      "Docker",
+      "Docker Compose",
+      "Kubernetes",
+      "GitHub Actions",
+      "CI/CD pipelines",
+      "AWS",
+      "Terraform",
+      "Nginx",
+      "Linux",
+      "Git",
+    ],
+  },
+  {
+    title: "Observability",
+    items: [
+      "Grafana",
+      "Prometheus",
+      "Loki",
+      "Structured logging",
+      "Health checks",
+      "Alerting",
+    ],
+  },
+  {
+    title: "Testing & Practices",
+    items: [
       "JUnit",
+      "pytest",
       "Selenium",
       "SonarQube",
+      "Unit, integration & API testing",
+      "Data modeling",
       "Agile / Scrum",
+      "SDLC",
+      "Technical documentation",
     ],
   },
 ];
@@ -87,7 +123,6 @@ export type Project = {
   tags: string[];
   year: string;
   href?: string;
-  accent: string;
   image?: string;
 };
 
@@ -99,7 +134,6 @@ export const projects: Project[] = [
     tags: ["Next.js", "Spring Boot", "WebSockets", "Kafka", "MySQL"],
     year: "2025",
     href: "https://github.com/ACHRAFBOUTZAD/plant-ops",
-    accent: "#ff7d00",
     image: "/dashboard-monitoring.webp",
   },
   {
@@ -108,8 +142,6 @@ export const projects: Project[] = [
       "IoT ingestion layer for device telemetry using MQTT, asynchronous FastAPI services, Kafka distribution, threshold alerts, and containerized deployment.",
     tags: ["FastAPI", "Python", "MQTT", "Kafka", "PostgreSQL", "Docker"],
     year: "2025",
-    href: "#",
-    accent: "#3ec5da",
     image: "/iot-platform.webp",
   },
   {
@@ -118,8 +150,6 @@ export const projects: Project[] = [
       "Microservices collecting application health, job status, and error events with real-time dashboards, incident timelines, and notification workflows.",
     tags: ["Spring Boot", "Kafka", "WebSockets", "SQL", "Docker"],
     year: "2025",
-    href: "#",
-    accent: "#e66235",
     image: "/moritoring-service.webp",
   },
   {
@@ -129,7 +159,6 @@ export const projects: Project[] = [
     tags: ["FastAPI", "Next.js", "WebSockets", "MySQL"],
     year: "2025",
     href: "https://github.com/ACHRAFBOUTZAD/Workflow-Orchestration-System",
-    accent: "#ffb066",
     image: "/orchestration-image.webp",
   },
 ];
@@ -145,27 +174,24 @@ export type ExperienceItem = {
 export const experience: ExperienceItem[] = [
   {
     role: "Software Engineer",
-    company: "Haldorix — MARWA Corporation",
+    company: "Haldorix, for MARWA Corporation",
     location: "Morocco",
-    period: "2025 — Present",
+    period: "Jul 2025 - Jul 2026",
     highlights: [
-      "Engineered real-time production dashboards and operational monitoring features that increased workflow visibility and contributed to an estimated 50% improvement in team productivity.",
-      "Optimized order and station workflows by exposing bottlenecks, queue status, and processing KPIs, helping reduce operational waiting time by approximately 30%.",
-      "Integrated backend services, WebSocket-based updates, and event-driven data flows to deliver timely production metrics for operational users.",
-      "Automated build, testing, and deployment through Git-based CI/CD practices, shortening release preparation and reducing deployment-related defects.",
-      "Collaborated with MARWA stakeholders and Haldorix engineers to translate business requirements into maintainable, well-documented features.",
+      "Engineered real-time factory dashboards and monitoring workflows that improved factory productivity by up to 80% through bottleneck detection, station visibility, and faster decisions.",
+      "Reduced worker and order waiting time by approximately 30% using live queue, cycle-time, throughput, work-in-progress, and station-efficiency analytics.",
+      "Delivered FastAPI services, WebSocket data flows, workflow automation, Next.js dashboards, Docker, testing, and CI/CD capabilities that supported up to 30% revenue growth and more reliable releases.",
+      "Deployed and operated the platform on Kubernetes with containerized services and automated pipelines, and applied Redis caching to reduce latency on frequently requested dashboard data.",
     ],
   },
   {
-    role: "Business Intelligence Intern",
-    company: "Faculty of Sciences Semlalia",
-    location: "Marrakech, Morocco",
-    period: "May 2023 — Jul 2023",
+    role: "Software Engineering Intern",
+    company: "Avionav",
+    location: "Tunisia (Remote)",
+    period: "Feb 2025 - Jul 2025",
     highlights: [
-      "Designed and implemented a decision-support information system for road-safety data analysis.",
-      "Integrated road-safety datasets into a centralized data warehouse, improving analytical consistency.",
-      "Built multidimensional analyses using OLAP cubes and MDX queries for structured indicator exploration.",
-      "Developed interactive Power BI dashboards for near-real-time visualization of key metrics.",
+      "Developed drone-navigation software using AI-assisted decision logic, A* graph search, waypoint optimization, and obstacle-aware path planning.",
+      "Integrated telemetry and simulation data into testable modules for route generation, trajectory selection, and safer autonomous navigation.",
     ],
   },
 ];
@@ -180,23 +206,18 @@ export const education: EducationItem[] = [
   {
     degree: "Specialized Master's in Information Systems Engineering",
     school: "Faculty of Sciences Semlalia, Marrakech",
-    period: "2023 — 2025",
+    period: "2023 - 2025",
   },
   {
     degree: "Bachelor's Degree in Mathematics and Computer Science",
     school: "Faculty of Sciences Semlalia, Marrakech",
-    period: "2018 — 2023",
-  },
-  {
-    degree: "Baccalaureate in Mathematical Sciences A",
-    school: "Lycée Akensouse, Essaouira",
-    period: "2017 — 2018",
+    period: "2018 - 2023",
   },
 ];
 
 export const certifications = [
-  "Engineering Practices for Building Quality Software — Coursera",
-  "Machine Learning with Python — Coursera",
+  { title: "Engineering Practices for Building Quality Software", issuer: "Coursera" },
+  { title: "Machine Learning with Python", issuer: "Coursera" },
 ];
 
 export const navLinks = [
